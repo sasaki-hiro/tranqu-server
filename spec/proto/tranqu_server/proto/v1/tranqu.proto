@@ -17,6 +17,7 @@ message TranspileResponse {
   string transpiled_program = 2;
   string stats = 3;
   string virtual_physical_mapping = 4;
+  string message = 5;
 }
 
 service TranspilerService {
