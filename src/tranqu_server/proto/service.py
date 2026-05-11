@@ -96,7 +96,13 @@ class TranspilerServiceImpl(tranqu_pb2_grpc.TranspilerServiceServicer):
                 "Transpile failed. Exception occurred.",
                 extra={"request_id": request_id},
             )
-            response = tranqu_pb2.TranspileResponse(status=1)  # type: ignore[attr-defined]
+            response = tranqu_pb2.TranspileResponse(
+                status=1,
+                transpiled_program="",
+                stats="{}",
+                virtual_physical_mapping="{}",
+                message=str(e),
+            )
         finally:
             elapsed_time = time.time() - start_time
             logger.debug(
