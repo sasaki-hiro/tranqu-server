@@ -91,7 +91,7 @@ class TranspilerServiceImpl(tranqu_pb2_grpc.TranspilerServiceServicer):
                     result.to_dict()["virtual_physical_mapping"]
                 ),
             )
-        except:  # noqa: E722
+        except Exception as e:   # noqa: E722
             logger.exception(
                 "Transpile failed. Exception occurred.",
                 extra={"request_id": request_id},
