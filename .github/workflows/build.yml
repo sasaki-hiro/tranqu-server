@@ -1,0 +1,25 @@
+name: build
+
+on:
+  workflow_dispatch:
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build image
+        run: |
+          docker build -f Dockerfile.dev -t tranqu-server .
+
+      - name: Save image
+        run: |
+          docker save tranqu-server | gzip > tranqu-server.tar.gz
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: tranqu-server
+          path: tranqu-server.tar.gz
