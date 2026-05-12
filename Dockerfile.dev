@@ -71,6 +71,4 @@ RUN --mount=type=cache,target=~/.cache/uv \
     uv sync --locked --no-dev
 
 # Run the application
-RUN uv sync --frozen --no-dev
-
-CMD [".venv/bin/python", "src/oqtopus_engine_combiner/app.py", "-c", "config/config.yaml", "-l", "config/logging.yaml"]
+CMD [".venv/bin/python", "src/tranqu_server/proto/service.py", "-c", "config/config.yaml", "-l", "config/logging.yaml"]
