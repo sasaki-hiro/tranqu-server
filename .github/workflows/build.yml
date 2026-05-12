@@ -12,7 +12,12 @@ jobs:
 
       - name: Build image
         run: |
-          docker build -f Dockerfile.dev -t tranqu-server .
+          docker build \
+            --network host \
+            --platform linux/amd64 \
+            -f Dockerfile.dev \
+            -t tranqu-server:amd64 \
+            .
 
       - name: Save image
         run: |
